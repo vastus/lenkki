@@ -1,6 +1,8 @@
 
 package lenkki.logiikka;
 
+import java.util.Arrays;
+
 public class LenkkiLista<E> implements Lista<E> {
 
 	private int koko;
@@ -149,18 +151,12 @@ public class LenkkiLista<E> implements Lista<E> {
 			return "[]";
 		}
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("[");
+		StringBuilder sb = new StringBuilder("[");
 		for (int i = 0; i < koko; i++) {
-			sb.append(hae(i).toString());
-			sb.append(", ");
+			sb.append(hae(i).toString()).append(", ");
 		}
 
-		int len = sb.length();
-		if (len > 1) {
-			sb.setLength(len - 2);
-		}
-
+		sb.setLength(sb.length() - 2);
 		sb.append("]");
 		return sb.toString();
 	}

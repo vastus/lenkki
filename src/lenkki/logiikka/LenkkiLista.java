@@ -151,8 +151,7 @@ public class LenkkiLista<E> implements Lista<E> {
 
 	private void tarkastaIndeksi(int indeksi) {
 		if (indeksi < 0 || indeksi >= koko ) {
-			String v = String.format("Indeksi %d rajojen listan ulkopuolella", indeksi);
-			throw new IndexOutOfBoundsException(v);
+			throw new IndexOutOfBoundsException();
 		}
 	}
 }

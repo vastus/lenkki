@@ -4,8 +4,8 @@ package lenkki.logiikka;
 public class LenkkiLista<E> implements Lista<E> {
 
 	private int koko;
-	private Solmu keula;
-	private Solmu pera;
+	private Solmu<E> keula;
+	private Solmu<E> pera;
 
 	public LenkkiLista() {
 		this.koko = 0;
@@ -102,12 +102,12 @@ public class LenkkiLista<E> implements Lista<E> {
 
 	@Override
 	public E keula() {
-		return (keula == null) ? null : (E) keula.elem();
+		return (keula == null) ? null : keula.elem();
 	}
 
 	@Override
 	public E pera() {
-		return (pera == null) ? null : (E) pera.elem();
+		return (pera == null) ? null : pera.elem();
 	}
 
 	@Override

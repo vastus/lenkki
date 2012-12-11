@@ -19,7 +19,7 @@ public class LenkkiListaTest {
 
 	@Test
 	public void latominen() {
-		assertTrue("Elementin latosinen tulee palauttaa true", lista.lado(1));
+		assertTrue("Elementin latomisen tulee palauttaa true", lista.lado(1));
 	}
 
 	@Test
@@ -48,7 +48,7 @@ public class LenkkiListaTest {
 	}
 
 	@Test
-	public void lisaaminen_tapahtuu_listan_ahteriin_lisaamalla() {
+	public void lisaaminen_tapahtuu_listan_peraan_lisaamalla() {
 		lista.lisaa(100);
 		lista.lisaa(200);
 
@@ -112,7 +112,7 @@ public class LenkkiListaTest {
 	}
 
 	@Test
-	public void listan_ahterista_poistaminen() {
+	public void listan_perasta_poistaminen() {
 		lista.lisaa(100);
 		lista.lisaa(200);
 		lista.lisaa(300);
@@ -169,7 +169,7 @@ public class LenkkiListaTest {
 	}
 
 	@Test
-	public void paivittaa_keulan_ja_ahterin_elementin_poistamisen_jalkeen() {
+	public void paivittaa_keulan_ja_peran_elementin_poistamisen_jalkeen() {
 		lista.lisaa(100);
 
 		assertNotNull(lista.keula());
@@ -182,7 +182,7 @@ public class LenkkiListaTest {
 	}
 
 	@Test
-	public void listan_keskelta_poistaminen_ei_muuta_ahteria() {
+	public void listan_keskelta_poistaminen_ei_muuta_peraa() {
 		lista.lisaa(100);
 		lista.lisaa(200);
 		lista.lisaa(300);
@@ -200,8 +200,9 @@ public class LenkkiListaTest {
 
 		Integer otettu = lista.ota();
 
+		assertFalse("poistaa otetun listasta", lista.sisaltaa(new Integer(100)));
 		assertEquals("palauttaa otetun", new Integer(100), otettu);
-		assertEquals("poistaa otetun listasta", 2, lista.koko());
+		assertEquals("päivittää koon", 2, lista.koko());
 		assertEquals("päivittää keulan", new Integer(200), lista.keula());
 		assertEquals("pitää perän samana", new Integer(300), lista.pera());
 	}
@@ -219,8 +220,9 @@ public class LenkkiListaTest {
 
 		Integer vedetty = lista.veda();
 
-		assertEquals("palauttaa otetun", new Integer(300), vedetty);
-		assertEquals("poistaa otetun listasta", 2, lista.koko());
+		assertFalse("poistaa vedetyn listasta", lista.sisaltaa(new Integer(300)));
+		assertEquals("palauttaa vedetyn", new Integer(300), vedetty);
+		assertEquals("päivittää koon", 2, lista.koko());
 		assertEquals("pitää keulan samana", new Integer(100), lista.keula());
 		assertEquals("päivittää perän", new Integer(200), lista.pera());
 	}

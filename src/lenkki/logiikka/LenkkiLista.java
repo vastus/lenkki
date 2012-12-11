@@ -51,41 +51,29 @@ public class LenkkiLista<E> implements Lista<E> {
 	public E poista(int indeksi) {
 		tarkastaIndeksi(indeksi);
 
-		Solmu<E> poistettava = null;
+		Solmu<E> poistettava;
 
 		if (koko == 1) {
 			poistettava = keula;
 			this.keula = null;
 			this.pera = null;
 		} else if (indeksi == 0) {
-			// poistetaan ensimmäinen elementti
 			poistettava = keula;
 			this.keula = keula.seuraava();
-		} else if (indeksi == koko - 1) {
-			// poistetaan viimeinen elementti
-			Solmu<E> ankkuri = null;
-			Solmu<E> solmu = keula;
-
-			for (int i = 0; i < indeksi; i++) {
-				ankkuri = solmu;
-				solmu = solmu.seuraava();
-			}
-
-			poistettava = solmu;
-			ankkuri.asetaSeuraava(solmu.seuraava());
-			this.pera = ankkuri;
 		} else {
-			// poistetaan listan keskeltä
 			Solmu<E> ankkuri = null;
-			Solmu<E> solmu = keula;
+			poistettava = keula;
 
 			for (int i = 0; i < indeksi; i++) {
-				ankkuri = solmu;
-				solmu = solmu.seuraava();
+				ankkuri = poistettava;
+				poistettava = poistettava.seuraava();
 			}
 
-			poistettava = solmu;
-			ankkuri.asetaSeuraava(solmu.seuraava());
+			// ankkuri -> poistettavaa edeltävä solmu
+			ankkuri.asetaSeuraava(poistettava.seuraava());
+			if (ankkuri.seuraava() == null) {
+				this.pera = ankkuri;
+			}
 		}
 		
 		koko--;

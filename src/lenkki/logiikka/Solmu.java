@@ -1,6 +1,11 @@
 
 package lenkki.logiikka;
 
+/*
+ * TODO:
+ * lisää viite edelliseen solmuu
+ */
+
 public class Solmu<E> {
 
 	private E elem;

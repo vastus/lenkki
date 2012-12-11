@@ -1,8 +1,6 @@
 
 package lenkki.logiikka;
 
-import java.util.Arrays;
-
 public class LenkkiLista<E> implements Lista<E> {
 
 	private int koko;
